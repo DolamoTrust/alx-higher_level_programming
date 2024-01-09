@@ -1,25 +1,28 @@
 #!/usr/bin/python3
-"""method for student creation"""
+"""0x0B. Python - Input/Output, task 11. Student to JSON"""
 
 
 class Student:
-    """Student obj, interesting how you don't have to directly
-    test for strings in a loop, python is weird"""
+    """Simple class containing student data.
 
+    Args:
+        first_name (str): given name of student
+        last_name (str): family name of student
+        age (int): age of student in years
+
+    Attributes:
+        first_name (str): given name of student
+        last_name (str): family name of student
+        age (int): age of student in years
+
+    """
     def __init__(self, first_name, last_name, age):
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
-    def to_json(self, attrs=None):
-        if attrs is None:
-            return self.__dict__
-        new_dictionary = {}
-        for key, value in self.__dict__.items():
-            if key in attrs:
-                new_dictionary[key] = value
-        return new_dictionary
+    def to_json(self):
+        """Retrieves a dictionary representation of self.
 
-    def reload_from_json(self, json):
-        for key, value in json.items():
-            setattr(self, key, value)
+        """
+        return self.__dict__
